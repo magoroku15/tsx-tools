@@ -1,6 +1,7 @@
 #define TYPE_DOUBLE
 #include <malloc.h>
-#include "rtm.h"        /* For gcc 4.8 use immintrin.h and -mrtm */
+#include "immintrin.h"
+//#include "rtm.h"        /* For gcc 4.8 use immintrin.h and -mrtm */
 
 
 char *buf;
@@ -38,10 +39,13 @@ retry:
 		printf("%d pass\n" ,sz);
 		return 0;
         } else {
+/*
 		if (status == 0) {
 			printf("%d pass\n" ,sz);
 			return 0;
-		} else {
+		} else 
+*/
+		{
 			printf("%d aborted %x, %d\n", sz, status, _XABORT_CODE(status));
 			//goto retry;
 			return -1;
@@ -65,8 +69,6 @@ main()
 
         while(1) {
                 if (rtm_test(lastsz) == -1)
-                        break;
+                        return -1;
         }
-
-
 }

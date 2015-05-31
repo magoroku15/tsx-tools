@@ -58,7 +58,7 @@ main()
 	}
 	while(1) {
 		if (rtm_test(lastsz) == -1)
-			break;
+			;
 	}
 }
 
